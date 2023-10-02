@@ -1,0 +1,16 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "aaaa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "honkit build",
+    "serve": "honkit serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "honkit": "^5.1.1"
+  }
+}
