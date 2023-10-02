@@ -9,6 +9,11 @@ on:
 permissions:
   contents: write
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  
 jobs:
   deploy:
     runs-on: ubuntu-22.04
@@ -26,9 +31,13 @@ jobs:
     - name: Build Honkit
       run: npm run build
 
+    - name: s3  
+      run: aws s3 sync --delete --region ap-northeast-1 _book s3://fuse-cyber-security-lecture
+
     - name: Push to gh-pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: ./_book
+    
